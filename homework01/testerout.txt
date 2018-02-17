@@ -1,0 +1,119 @@
+
+ELEVEN TESTS FOR isLeapYear():
+  [note: verified via 'http://www.miniwebtool.com/leap-years-list/?start_year=1582&end_year=2017']
+
+   Test for year 1600 (long): true
+   Test for year 1700 (long): false
+   Test for year 1800 (int) : false
+   Test for year 1900 (int) : false
+   Test for year 1992 (int) : true
+   Test for year 1415 (long): false
+   Test for year 1996 (long): true
+   Test for year 1995 (int) : false
+   Test for year 1215 (long): false
+   Test for year 2004 (int) : true
+   Test for year 1814 (long): false
+
+THIRTEEN TESTS FOR daysInMonth():
+   Test January 2001  : correct, 31
+   Test February 2003 : correct, 28
+   Test February 2004 : correct, 29
+   Test March 2014    : correct, 31
+   Test April 2012    : correct, 30
+   Test May 1993      : correct, 31
+   Test June 1994     : correct, 30
+   Test July 1995     : correct, 31
+   Test August 1865   : correct, 31
+   Test September 2102: correct, 30
+   Test October 1993  : correct, 31
+   Test November 1999 : correct, 30
+   Test December 2014 : correct, 31
+
+EIGHT TESTS FOR isValidDate():
+   Test January 1, 2000    : valid
+   Test February 29, 2001  : invalid
+   Test December 31, 2014  : valid
+   Test December 0, 2000   : invalid
+   Test December 32, 2005  : invalid
+   Test Zeroary 15, 2005   : invalid
+   Test Thirtember 1, 2005 : invalid
+   Test February 29, 2004  : valid
+
+SEVEN TESTS FOR dateEquals():
+   Test February 29, 2004 with February 29, 2004  : equal
+   Test December 29, 2004 with February 29, 2004  : not equal
+   Test February 29, 2004 with February 28, 2004  : not equal
+   Test February 28, 2004 with February 28, 2005  : not equal
+   Test February 20, 2000 with January 13, 2000  : not equal
+   Test February 20, 2000 with January 20, 2001  : not equal
+   Test February 20, 2000 with January 13, 2010  : not equal
+
+THREE TESTS FOR compareDate():
+   Test Ides of March 2005 with Ides of March 2006  : first <  second
+   Test Ides of March 2005 with Ides of March 2005  : first == second
+   Test Ides of March 2006 with Ides of March 2005  : first >  second
+
+TWELVE TESTS FOR daysBetween():
+   Counting 0000 days between 03-15-2005 and 03-15-2005 : zero days 
+   Counting 0001 day  between 03-15-2005 and 03-16-2005 : one day   
+   Counting 0001 day  between 03-31-2005 and 04-01-2005 : one day   
+   Counting 0003 days between 12-30-2005 and 01-02-2006 : three days
+   Counting 0365 days between 08-15-2005 and 08-15-2006 : 0365 days
+   Counting 0366 days between 08-15-2007 and 08-15-2008 : 0366 days
+   Counting 0364 days between 08-15-2001 and 08-14-2002 : 0364 days
+   Counting 0508 days between 03-15-2006 and 08-05-2007 : 0508 days
+   Counting 1239 days between 03-15-2005 and 08-05-2008 : 1239 days
+   Counting 1060 days between 11-15-2005 and 10-10-2008 : 1060 days
+   Counting 8638 days between 11-15-2001 and 07-10-2025 : 8638 days
+   Counting 0001 day  between 03-16-2005 and 03-15-2005 : one day   
+
+NINE TESTS FOR toDayOfWeekString():
+   Checking for 'Sunday'    : Got it!
+   Checking for 'Monday'    : Got it!
+   Checking for 'Tuesday'   : Got it!
+   Checking for 'Wednesday' : Got it!
+   Checking for 'Thursday'  : Got it!
+   Checking for 'Friday'    : Got it!
+   Checking for 'Saturday'  : Got it!
+   Checking for 'Zeroday'   : false
+   Checking for 'Octoday'   : false
+
+FOURTEEN TESTS FOR toMonthString():
+   Checking for 'January'    : Got it!
+   Checking for 'February'   : Got it!
+   Checking for 'March'      : Got it!
+   Checking for 'April'      : Got it!
+   Checking for 'May'        : Got it!
+   Checking for 'June'       : Got it!
+   Checking for 'July'       : Got it!
+   Checking for 'August'     : Got it!
+   Checking for 'September'  : Got it!
+   Checking for 'October'    : Got it!
+   Checking for 'November'   : Got it!
+   Checking for 'December'   : Got it!
+   Checking for 'Zeroary'    : false
+   Checking for 'Thirtember' : false
+Counting 0000 days between 03-15-2005 and 03-15-2005 
+0
+Counting 0001 day  between 03-15-2005 and 03-16-2005 
+1
+Counting 0001 day  between 03-31-2005 and 04-01-2005 
+1
+Counting 0003 days between 12-30-2005 and 01-02-2006 
+3
+Counting 0003 days between 12-30-2005 and 01-02-2006 
+3
+Counting 0366 days between 08-15-2007 and 08-15-2008 
+366
+Counting 0364 days between 08-15-2001 and 08-14-2002 
+364
+Counting 0508 days between 03-15-2006 and 08-05-2007 
+508
+Counting 1239 days between 03-15-2005 and 08-05-2008 
+1239
+Counting 1060 days between 11-15-2005 and 10-10-2008 
+1060
+Counting 8638 days between 11-15-2001 and 07-10-2025 
+8638
+Counting 0001 day  between 03-16-2005 and 03-15-2005 
+1
