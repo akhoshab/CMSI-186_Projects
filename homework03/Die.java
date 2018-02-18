@@ -50,12 +50,12 @@ public class Die {
    * Note: parameter must be checked for validity; invalid value must throw "IllegalArgumentException"
    */
    public Die( int nSides ) {
-      if (nSides < MINIMUM_SIDES) {
+      if (nSides < MINIMUM_SIDES)
       // if (nSides < 4) {
            throw new IllegalArgumentException (); //throws an exception and ends code .. basically return statment thats an error
-       } else {
-           sides = nSides;
-       }
+      else
+           this.sides = nSides;
+
        // call the dice and the sides
    }
 
@@ -64,7 +64,10 @@ public class Die {
    * @return  integer value of the result of the roll, randomly selected
    */
    public int roll() {
-//math.random is a function from the math class, returns decimal between 0-1... you can multiply and increase the range
+     this.pips = (int) Math.round(Math.random() * (this.sides - 1)) + 1;
+     return this.pips;
+
+//math.random is a function from the math class, returns decimal between 0-1... you can multiply and increase the range... but its a decimal not an int
 // multiply by 10 --> 0 - 10 .... you can also add --> shifts the range instead of increasing it
 // we made a die class --> and now we have to know which dice were rolling
         // Die d = new Die (6);
@@ -73,8 +76,9 @@ public class Die {
         // this.nSides;
 // forcing a cast is making it become another thing -- not a double
 // this is bc we dont know which dice were rolling
-// (int) Math.floor(Math.random() * this.sides) + 1  --> return n or just return the variable we made 
-       return (int) Math.floor(Math.random() * this.sides) + 1;
+// (int) Math.floor(Math.random() * this.sides) + 1  --> return n or just return the variable we made
+
+    //   return (int) Math.floor(Math.random() * this.sides) + 1;  round is better than floor bc its half way
    }
 
   /**
@@ -85,7 +89,8 @@ public class Die {
    * @return the pip count of THIS die instance
    */
    public int getValue() {
-      return 0;
+
+      return this.pips;
    }
 
   /**
@@ -93,7 +98,13 @@ public class Die {
    * @return      The new number of sides, in case anyone is looking
    * @throws      IllegalArgumentException
    */
-   public void setSides( int sides ) {
+   public void setSides( int nSides ) {
+     if (nSides < MINIMUM_SIDES)
+     // this is different bc one intantiates it/ creates it ... this one sets the value that was already created
+          throw new IllegalArgumentException ();
+     else
+          this.sides = nSides;
+
    }
 
   /**
@@ -101,7 +112,7 @@ public class Die {
    * @return String representation of this Die
    */
    public String toString() {
-      return "";
+      return "[" + this.pips + "]";
    }
 
   /**
@@ -109,7 +120,8 @@ public class Die {
    * @return String representation of this Die
    */
    public static String toString( Die d ) {
-      return "";
+       return d.toString();
+      //return "";
    }
 
   /**
@@ -117,6 +129,12 @@ public class Die {
    */
    public static void main( String[] args ) {
       System.out.println( "Hello world from the Die class..." );
+      Die die1 = new Die(6);
+      for (int x = 0; x < 100; x++) {
+        die1.setSides(6);
+        die1.roll();
+        System.out.println(die1.toString());
+      }
       //System.out.println((int)(Math.floor(Math.random() * 6) + 1));
    }
 
