@@ -1,0 +1,60 @@
+
+Here is feedback on your code.
+
+Homework 0:
+-----------
+   You don't have any file header.  Granted, it doesn't really serve much
+   purpose in this small program, but it's a good habit to get into
+
+   Your file is named "Hello.java" but the name of the class inside the
+   file is "Greeter".  This will not compile.  Either change the name of
+   the class INSIDE the file to "Hello" or [better] change the name of the
+   file OUTSIDE to "Greeter.java".  THEY MUST MATCH.
+
+   Also remember, if you have any constructors defined, THEIR NAMES MUST
+   MATCH THESE AS WELL.
+
+
+Homework 1:
+-----------
+   There is a lot of "cruft" in your code.  When you have code that is in
+   the file but has been rendered useless by commenting it, it's distracting
+   to the person reading the code.  You should ALWAYS remove that "cruft"
+   in your final version of your code.  This is especially true when using
+   GitHub, because you can always compare versions side-by-side and see how
+   things have changed.
+
+   The switch in your "toMonthString()" method could be a lot shorter if you
+   simply return the string desired:
+
+      switch( month - 1 ) {
+         case JANUARY: return "January";
+         case FEBRUARY: return "February";
+           .... etc. ....
+
+   Same thing for "toDayOfWeekString()"
+
+   For "CountTheDays", since the args are in an array, you could also define
+   the date values as an array of longs, and do the conversion in a loop.
+   That would make your code more succinct.
+
+
+Homework 2:
+-----------
+   Again, watch the "cruft".
+
+   In your palindrome method, you could tighten the code a bit by simply
+   returning if the two characters are NOT equal.  If the comparison fails,
+   simply return false.  You can also move the increment/decrement statements
+   to be inside the parens of the comparison statement.
+
+   Be sure to spell check your comments.
+
+   Be sure your indenting is consistent, even with the closing curly braces
+   at the end of "if" and "for" statement blocks.
+
+   In your "evensOnlyNoDupes()" and your "oddsOnlyNoDupes()" methods, the
+   use of the Set class seems totally extraneous, except that you are using
+   it to check if you have already logged that character.  While this works,
+   it's not the most intuitive use of a Set....
+
