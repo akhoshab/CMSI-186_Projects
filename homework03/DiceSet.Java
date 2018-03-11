@@ -46,12 +46,16 @@ public class DiceSet{
    */
    public DiceSet( int count, int sides ) {
      // the count cant be negative or zero
-     if (count < 1 || sides < 4)
-        throw new IllegalArgumentException ();
-     else
-      count = count;
-      sides = sides;
-      ds = new Die[count];
+     if (count < 1 || sides < 4) {
+         throw new IllegalArgumentException ();
+     } else {
+         this.count = count;
+         this.sides = sides;
+         this.ds = new Die[count];
+         for (int i = 0; i < count; i++) {
+             ds[i] = new Die(sides);
+         }
+     }
    }
 
   /**
@@ -74,16 +78,15 @@ public class DiceSet{
    *  the values of the dice in the set
    */
    public void roll() {
-    //  if (count < 1 || sides < 4)
-    //     throw new IllegalArgumentException ();
-    //  else
-    //  ds.roll();
-    //  ds.toString();
-       for (int i=0; i < count; i++){
-       ds[i].roll();
-       ds[i].toString();
-  }
- }
+   //  if (count < 1 || sides < 4)
+   //     throw new IllegalArgumentException ();
+   //  else
+   //  ds.roll();
+   //  ds.toString
+   for (int i=0; i < count; i++){
+       System.out.println(ds[i].roll());
+   }
+}
      // roll all of the dice in the dice set ... can use a for loop
      // call the roll methid from die.java ...
 
@@ -95,14 +98,15 @@ public class DiceSet{
    * @trhows IllegalArgumentException if the index is out of range
    */
    public int rollIndividual( int dieIndex ) {
-     if ((dieIndex < 0)||(dieIndex>count))
-        throw new IllegalArgumentException ();
-      else
-      //  return ds[dieIndex].roll();
-       ds[dieIndex].roll();
-      return ds[dieIndex].getValue();
-     // roll one of the dice
-     // roll at the position of die index ... ``
+     if (dieIndex < 0 || dieIndex >= count) {
+         throw new IllegalArgumentException ();
+     } else {
+         //  return ds[dieIndex].roll();
+         ds[dieIndex].roll();
+         return ds[dieIndex].getValue();
+         // roll one of the dice
+         // roll at the position of die index ... ``
+     }
    }
 
   /**
@@ -111,11 +115,11 @@ public class DiceSet{
    * @trhows IllegalArgumentException if the index is out of range
    */
    public int getIndividual( int dieIndex ) {
-     if ((dieIndex < 0)||(dieIndex>count))
-        throw new IllegalArgumentException ();
-      else
-        return ds[dieIndex].getValue();
-  //^^
+     if ((dieIndex < 0)||(dieIndex >= count)) {
+         throw new IllegalArgumentException ();
+     } else {
+         return ds[dieIndex].getValue();
+     }
    }
 
   /**
@@ -123,12 +127,12 @@ public class DiceSet{
    */
    public String toString() {
      //String result = null;
-     String result = "[";
+     String result = "";
     for (int i=0; i < count; i++) {
     //  result = result + ds[i] + "";
-     result = ds[i].toString();
+     result = result + ds[i].toString();
     }
-     return result + "]";
+     return result;
      // needs to be a for loop ....
    }
 
@@ -136,7 +140,12 @@ public class DiceSet{
    * @return Class-wide version of the preceding instance method
    */
    public static String toString( DiceSet ds ) {
-      return ds.toString();
+       return ds.toString();
+      // String s = "";
+      // for (int i = 0; i < ds.count; i++) {
+      //     s = s + "[" + ds.ds[i].getValue() + "]";
+      // }
+      // return s;
    }
 
   /**
@@ -144,7 +153,7 @@ public class DiceSet{
    */
    // ds1.isIdentical(ds2)
    public boolean isIdentical( DiceSet ds ) {
-     if (this.count!= ds.count) {
+     if (this.count != ds.count) {
        return false;
      }
      if (this.sides != ds.sides){
@@ -158,17 +167,15 @@ public class DiceSet{
    */
    public static void main( String[] args ) {
      System.out.println( "Hello world from the DiceSet..." );
-      if(args.length < 2) {
-        throw new IllegalArgumentException();
-      }
+     if(args.length < 2) {
+         throw new IllegalArgumentException();
+     }
      int c = Integer.parseInt(args[0]);
      int s = Integer.parseInt(args[1]);
      DiceSet ds = new DiceSet(c, s);
-     for (int x = 0; x < 6; x++) {
-       ds.roll();
+     for (int x = 0; x < c; x++) {
+       ds.ds[x].roll();
        System.out.println(ds.toString());
      }
    }
-
 }
-
