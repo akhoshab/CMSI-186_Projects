@@ -1,0 +1,10 @@
+NOTES
+
+//SoccerSim.java 
+
+//friction decreases the balls speed at one rate per second till stops
+//x y coordinates in feet  and  x y directions in feet per sec 
+//new position  and  x y directions + friction 
+// --> after every time slice display ^^
+
+//if they collide or dont
