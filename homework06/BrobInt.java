@@ -65,10 +65,11 @@ public class BrobInt {
             internalValue = value.substring(1);
          }
          else {
-           internalValue = value.substring(0);
+           internalValue = value.substring(0); // donovan disapproves
          }
       }
-      //super(); da fuck -waseem 2018
+      reversed = reversedString(internalValue);
+      //TODO assign byteVersion
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,13 +81,28 @@ public class BrobInt {
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public boolean validateDigits() {
      for (int i = 0; i < internalValue.length(); i++) {
-       if (internalValue.charAt(i) != '1' || internalValue.charAt(i) != '2' || internalValue.charAt(i) != '3' ||
-       internalValue.charAt(i) != '4' || internalValue.charAt(i) != '5' || internalValue.charAt(i) != '6' || internalValue.charAt(i) != '7' ||
-       internalValue.charAt(i) != '8' || internalValue.charAt(i) != '9')
-         throw new IllegalArgumentException( "\n         Sorry, thats hinky" );
+       if (internalValue.charAt(i) != '1' && internalValue.charAt(i) != '2' && internalValue.charAt(i) != '3' &&
+       internalValue.charAt(i) != '4' && internalValue.charAt(i) != '5' && internalValue.charAt(i) != '6' && internalValue.charAt(i) != '7' &&
+       internalValue.charAt(i) != '8' && internalValue.charAt(i) != '9' && internalValue.charAt(i) != '0') {
+          throw new IllegalArgumentException( "\n         Sorry, thats hinky" );
+       }
+
+       /*
+       if (!Character.isDigit(internalValue.charAt(i))) {
+          throw new IllegalArgumentException( "\n         Sorry, thats hinky" );
+       }
+       */
      }
      return true;
+   }
 
+   // Helper method to reverse string s
+   private String reversedString (String s) {
+      String rString = "";
+      for (int i = s.length() - 1; i >= 0; i--) {
+         rString = rString + s.charAt(i);
+      }
+      return rString;
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,13 +110,18 @@ public class BrobInt {
    *  @return BrobInt that is the reverse of the value of this BrobInt
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt reverser() {
-     for (int i = internalValue.length() - 1; i >= 0; i--) {
-         reveresed = reveresed + charAt(i);
-     }
-      return BrobInt(reversed);
+      String gintString = this.internalValue;
+      String rString = reversedString(gintString);
+      // for (int i = internalValue.length() - 1; i >= 0; i--) {
+      //    rString = rString + this.charAt(i);
+      // }
+      return BrobInt(rString);
       //take the last number of the brobint and put it at the begining of a new string
       //why is it twice
    }
+
+   // gint.reverser();
+   // this.reverseer();
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    *  Method to reverse the value of a BrobIntk passed as argument
@@ -109,7 +130,12 @@ public class BrobInt {
    *  @return BrobInt that is the reverse of the value of the BrobInt passed as argument
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public static BrobInt reverser( BrobInt gint ) {
-      throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
+      String gintString = gint.internalValue;
+      String rString = reversedString(gintString);
+      // for (int i = internalValue.length() - 1; i >= 0; i--) {
+      //    rString = rString + gintString.charAt(i);
+      // }
+      return BrobInt(rString);
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -118,6 +144,7 @@ public class BrobInt {
    *  @return BrobInt that is the sum of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt addByte( BrobInt gint ) {
+      //
       throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
    }
 
@@ -127,6 +154,12 @@ public class BrobInt {
    *  @return BrobInt that is the sum of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt addInt( BrobInt gint ) {
+      //two collumn addition
+      //add first column then the second, carry
+      //go from right to left then go back and deal with the carry
+      //if this number has a nine, subtract 10 from it --> carry the one
+      //convert the string into an int array ???
+      //how to handle larger negatives or if the signs are different or the same
       throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
    }
 
@@ -145,6 +178,8 @@ public class BrobInt {
    *  @return BrobInt that is the difference of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt subtractInt( BrobInt gint ) {
+      //helper method to change the sign --> swaps the sign from 1 to 0 and then add it
+      //a -b is a + -b
       throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
    }
 
