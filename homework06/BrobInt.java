@@ -105,6 +105,11 @@ public class BrobInt {
       return rString;
    }
 
+   //Helper method that gets the normal value
+   private String getValue (){
+     return internalValue;
+   }
+
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    *  Method to reverse the value of this BrobInt
    *  @return BrobInt that is the reverse of the value of this BrobInt
@@ -134,7 +139,7 @@ public class BrobInt {
       String rString = reversedString(gintString);
       // for (int i = internalValue.length() - 1; i >= 0; i--) {
       //    rString = rString + gintString.charAt(i);
-      // }
+      //
       return BrobInt(rString);
    }
 
@@ -154,6 +159,16 @@ public class BrobInt {
    *  @return BrobInt that is the sum of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt addInt( BrobInt gint ) {
+     int[] brobIntArr = new int[internalValue.length()];
+     internalValue2 = gint.getValue(); 
+     for (int i = internalValue.length() - 1; i >= 0; i--) {
+
+        rString = rString + s.charAt(i)
+        // brob
+        //get the input first --> value ur comparing to and the value thats input
+      //look at the sizes of the arrays and compare them
+      //take the biggr int and the biggests posible size is that plus one
+     //need to create an array of ints --> contructing obj
       //two collumn addition
       //add first column then the second, carry
       //go from right to left then go back and deal with the carry
