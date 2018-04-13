@@ -84,7 +84,7 @@ public class BrobInt {
        if (internalValue.charAt(i) != '1' && internalValue.charAt(i) != '2' && internalValue.charAt(i) != '3' &&
        internalValue.charAt(i) != '4' && internalValue.charAt(i) != '5' && internalValue.charAt(i) != '6' && internalValue.charAt(i) != '7' &&
        internalValue.charAt(i) != '8' && internalValue.charAt(i) != '9' && internalValue.charAt(i) != '0') {
-          throw new IllegalArgumentException( "\n         Sorry, thats hinky" );
+           throw new IllegalArgumentException( "\n         Sorry, thats hinky" );
        }
 
        /*
@@ -96,6 +96,13 @@ public class BrobInt {
      return true;
    }
 
+   // Helper method to get the size of the brobint
+   public int getSize() {
+       return this.internalValue.size();
+   }
+
+   // int length = gint.getLength();
+
    // Helper method to reverse string s
    private String reversedString (String s) {
       String rString = "";
@@ -103,11 +110,6 @@ public class BrobInt {
          rString = rString + s.charAt(i);
       }
       return rString;
-   }
-
-   //Helper method that gets the normal value
-   private String getValue (){
-     return internalValue;
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -159,11 +161,28 @@ public class BrobInt {
    *  @return BrobInt that is the sum of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt addInt( BrobInt gint ) {
-     int[] brobIntArr = new int[internalValue.length()];
-     internalValue2 = gint.getValue(); 
-     for (int i = internalValue.length() - 1; i >= 0; i--) {
+      int largerInt = (gint.getSize() > this.getSize()) ? gint.getSize(): this.getSize();
+      int[] thisArray = new int[largerInt];
+      int[] gintArray = new int[largerInt];
+      int i = largerInt - 1;
+      // while(largerInt - this.getSize() <= i) {
+      //     thisArray[i] = Integer.parseInt(this.internalValue.substring(i, i + 1));
+      //     i--;
+      // }
 
-        rString = rString + s.charAt(i)
+
+
+
+
+
+
+
+
+
+     internalValue2 = gint.getValue();
+     for (int i = internalValue.length() - 1; i >= 0; i--) {
+        rString = rString + s.charAt(i);
+     }
         // brob
         //get the input first --> value ur comparing to and the value thats input
       //look at the sizes of the arrays and compare them
