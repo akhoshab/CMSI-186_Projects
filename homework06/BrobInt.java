@@ -37,10 +37,10 @@ public class BrobInt {
 
   /// Some constants for other intrinsic data types
   ///  these can help speed up the math if they fit into the proper memory space
-   public static final BrobInt MAX_INT  = new BrobInt( new Integer.valueOf( Integer.MAX_VALUE ).toString() );
-   public static final BrobInt MIN_INT  = new BrobInt( new Integer.valueOf( Integer.MIN_VALUE ).toString() );
-   public static final BrobInt MAX_LONG = new BrobInt( new Long.valueOf( Long.MAX_VALUE ).toString() );
-   public static final BrobInt MIN_LONG = new BrobInt( new Long.valueOf( Long.MIN_VALUE ).toString() );
+   // public static final BrobInt MAX_INT  = new BrobInt( new Integer.valueOf(Integer.MAX_VALUE).toString() ); //TODO uncomment
+   // public static final BrobInt MIN_INT  = new BrobInt( new Integer.valueOf( Integer.MIN_VALUE ).toString() );
+   // public static final BrobInt MAX_LONG = new BrobInt( new Long.valueOf( Long.MAX_VALUE ).toString() );
+   // public static final BrobInt MIN_LONG = new BrobInt( new Long.valueOf( Long.MIN_VALUE ).toString() );
 
   /// These are the internal fields
    private String internalValue = "";        // internal String representation of this BrobInt
@@ -68,6 +68,7 @@ public class BrobInt {
            internalValue = value.substring(0); // donovan disapproves
          }
       }
+      internalValue = removeLeadingZeroes(internalValue);
       reversed = reversedString(internalValue);
       //TODO assign byteVersion
    }
@@ -96,15 +97,23 @@ public class BrobInt {
      return true;
    }
 
+   private static String removeLeadingZeroes(String s) {
+      int i = 0;
+      while (s.charAt(i) == '0') {
+         i++;
+      }
+      return s.substring(i);
+   }
+
    // Helper method to get the size of the brobint
    public int getSize() {
-       return this.internalValue.size();
+       return this.internalValue.length();
    }
 
    // int length = gint.getLength();
 
    // Helper method to reverse string s
-   private String reversedString (String s) {
+   private static String reversedString (String s) {
       String rString = "";
       for (int i = s.length() - 1; i >= 0; i--) {
          rString = rString + s.charAt(i);
@@ -122,7 +131,7 @@ public class BrobInt {
       // for (int i = internalValue.length() - 1; i >= 0; i--) {
       //    rString = rString + this.charAt(i);
       // }
-      return BrobInt(rString);
+      return new BrobInt(rString);
       //take the last number of the brobint and put it at the begining of a new string
       //why is it twice
    }
@@ -142,7 +151,7 @@ public class BrobInt {
       // for (int i = internalValue.length() - 1; i >= 0; i--) {
       //    rString = rString + gintString.charAt(i);
       //
-      return BrobInt(rString);
+      return new BrobInt(rString);
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -161,14 +170,58 @@ public class BrobInt {
    *  @return BrobInt that is the sum of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt addInt( BrobInt gint ) {
-      int largerInt = (gint.getSize() > this.getSize()) ? gint.getSize(): this.getSize();
-      int[] thisArray = new int[largerInt];
-      int[] gintArray = new int[largerInt];
-      int i = largerInt - 1;
-      // while(largerInt - this.getSize() <= i) {
-      //     thisArray[i] = Integer.parseInt(this.internalValue.substring(i, i + 1));
-      //     i--;
-      // }
+      int largerInt = (gint.getSize() > this.getSize()) ? gint.getSize(): this.getSize(); //take into account +/+ and +/-
+      int[] thisArray = new int[largerInt + 1]; // this is for same sign addition
+      int[] gintArray = new int[largerInt + 1];
+      int j = 0;
+      while(this.getSize() - j > 0) {
+          thisArray[thisArray.length - j - 1] = Integer.parseInt(this.internalValue.substring(this.getSize() - j - 1, this.getSize() - j));
+          j++;
+      }
+      j = 0;
+      while(gint.getSize() - j > 0){
+         gintArray[gintArray.length - j - 1] = Integer.parseInt(gint.internalValue.substring(gint.getSize() - j - 1, gint.getSize() - j));
+         j++;
+      }
+      if (this.sign == gint.sign) {
+         int[] sumArray = new int[largerInt + 1];
+         for(int i = sumArray.length - 1; i >= 0; i--){
+            sumArray[i] = thisArray[i] + gintArray[i];
+            if (sumArray[i] > 9) {
+               sumArray[i] = sumArray[i] - 10;
+               sumArray[i - 1] = sumArray[i - 1] + 1;
+            }
+         }
+         String sumString = "";
+         for(int i = 0; i < sumArray.length; i++){
+            sumString = sumString + String.valueOf(sumArray[i]);
+         }
+         sumString = removeLeadingZeroes(sumString);
+         if(this.sign == 1) {
+            sumString = "-" + sumString;
+         }
+         return new BrobInt(sumString);
+      } else { //opposite sign addition
+         int[] firstGint;
+         int[] secondGint;
+         if (gint.getSize() > this.getSize()) {  //abs value is bigger
+            firstGint = gintArray;
+            secondGint = thisArray;
+         } else if (this.getSize() > gint.getSize()){
+            firstGint = thisArray;
+            secondGint = gintArray;
+         } else {
+            //TODO find absolute value
+         }
+         int[] diffArray = new int[largerInt + 1];
+         for (int i = 0; i < diffArray.length; i++) {
+            //diffArray[i] =
+         }
+
+
+
+         // if( larger value = dominnant sign )
+      }
 
 
 
@@ -179,10 +232,15 @@ public class BrobInt {
 
 
 
-     internalValue2 = gint.getValue();
-     for (int i = internalValue.length() - 1; i >= 0; i--) {
-        rString = rString + s.charAt(i);
-     }
+
+
+
+     // internalValue2 = gint.getValue();
+     // for (int i = internalValue.length() - 1; i >= 0; i--) {
+     //    rString = rString + s.charAt(i);
+     // }
+
+
         // brob
         //get the input first --> value ur comparing to and the value thats input
       //look at the sizes of the arrays and compare them
@@ -274,7 +332,7 @@ public class BrobInt {
    public static BrobInt valueOf( long value ) throws NumberFormatException {
       BrobInt gi = null;
       try {
-         gi = new BrobInt( new Long.valueOf( value ).toString() );
+         //gi = new BrobInt( new Long.valueOf( value ).toString() ); TODO: uncomment
       }
       catch( NumberFormatException nfe ) {
          System.out.println( "\n  Sorry, the value must be numeric of type long." );
@@ -295,6 +353,15 @@ public class BrobInt {
       return internalValue;
    }
 
+   // return string representation of BrobInt from internalValue
+   public static String returnString (BrobInt bi) {
+      String s = "";
+      for (int i = 0; i < bi.internalValue.length(); i++) {
+         s += bi.internalValue.charAt(i);
+      }
+      return s;
+   }
+
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    *  Method to display an Array representation of this BrobInt as its bytes
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -310,6 +377,10 @@ public class BrobInt {
    public static void main( String[] args ) {
       System.out.println( "\n  Hello, world, from the BrobInt program!!\n" );
       System.out.println( "\n   You should run your tests from the BrobIntTester...\n" );
+
+      String test = "00000123123";
+      test = removeLeadingZeroes(test);
+      System.out.println(test);
 
       System.exit( 0 );
    }
