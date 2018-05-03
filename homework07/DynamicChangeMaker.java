@@ -68,7 +68,7 @@
         for (int r = 0; r < rowCount; r++) {
             coin = denominations[r];
             for (int c = 0; c < columnCount; c++){
-                currentRC = new Tuple(columnCount);
+                currentRC = new Tuple(rowCount);
                 if (c == 0){
                     tupleArray[r][c] = new Tuple(rowCount);
                 } else {
