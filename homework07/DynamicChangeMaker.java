@@ -86,13 +86,6 @@
             }
         }
 
-
-
-
-
-
-
-
         //need 2d array, how many rows and collumns
         int rowCount = denominations.length;
         int columnCount = amount + 1;
