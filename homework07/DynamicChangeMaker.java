@@ -48,7 +48,7 @@
          //Tupple change = ...
     }
 
-    public static Tuple dynamicChangeMaker(int[] denominations, int amount){
+    public static Tuple MakeChangeWithDynamicPrograming(int[] denominations, int amount){
         //need 2d array, how many rows and collumns
         int rowCount = denominations.length;
         int columnCount = amount + 1;
