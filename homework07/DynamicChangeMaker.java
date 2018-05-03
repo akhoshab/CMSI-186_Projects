@@ -83,8 +83,8 @@
                                 tuple[r][c] = currentRC.add(tuple[r][c - coin])
                             }
                         }
-                        if (tuple[r - 1][c].total() < tuple[r][c].total() && !(tuple[r-1][c].euqals(Tuple.IMPOSSIBLE)) || tuple[r][c].equals(Tuple.IMPOSSIBLE) &&
-                        tuple[r-1][c].total > 0){
+                        if ((tuple[r - 1][c].total() < tuple[r][c].total() && !(tuple[r-1][c].euqals(Tuple.IMPOSSIBLE)))
+                            || (tuple[r][c].equals(Tuple.IMPOSSIBLE) && tuple[r-1][c].total > 0)){
                             tuple[r][c] = tuple[r-1][c];
                         }
                     }
