@@ -10,6 +10,10 @@
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
  public class DynamicChangeMaker {
+     /**
+     * takes in two arguments
+     * @param args the two arguments
+     */
      public static void main(String[] args) {
         if (args.length != 2){
              System.out.println("Impossible. You need two arguments!!!");
@@ -63,10 +67,12 @@
 
          }
     }
-    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    /**
      * outputs optimal way of making change using certain coin denomintations
-     * @return  most optimal tuple
-     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+     * @param denominations coin denominations
+     * @param amount total amount
+     * @return most optimal tuple
+     */
 
     public static Tuple makeChangeWithDynamicProgramming(int[] denominations, int amount){
         // checks
