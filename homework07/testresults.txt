@@ -1,0 +1,36 @@
+"running TupleTestHarnesses for evaluation....." 
+. 
+. 
+"running DynamicChangemakerTestHarness for evaluation....." 
+. 
+. 
+. 
+"running standalone programs to test extra credit operations" 
+. 
+"running java DynamicChangeMaker 8,13,4,9 14" 
+. 
+"running java DynamicChangeMaker 2,3 5" 
+. 
+"running java DynamicChangeMaker 2,3,7,5,51,29,11 13579" 
+. 
+"running java DynamicChangeMaker 17,23,121,47,3 13579" 
+. 
+"running java DynamicChangeMaker 1,7,9 12" 
+. 
+"running java DynamicChangeMaker 11,13,17,19,23 1357911" 
+. 
+"running java DynamicChangeMaker 23,19,17,13,11 1357911" 
+. 
+"running java DynamicChangeMaker 3,1,9,8 14" 
+. 
+"running java DynamicChangeMaker 3" 
+. 
+"running java DynamicChangeMaker 3,12 -4" 
+. 
+"running java DynamicChangeMaker 0,12,3 63" 
+. 
+"running java DynamicChangeMaker 10,12,3,12 63" 
+. 
+. 
+...........done.............. 
+. 

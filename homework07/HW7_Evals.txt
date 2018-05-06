@@ -1,0 +1,45 @@
+
+Evaluation for homework 07: Dynamic Programming Change Maker
+
+DynamicChangeMaker class
+Includes running DynamicChangemakerTestHarness program
+Includes running h7.bat or h7.sh which includes running
+   from the command line
+   View h7.bat and/or h7.sh to see test parameters used
+   View testresults.txt to see resulting output
+NOTE: No abbreviations are allowed.
+=======================================================
+
+A total of one point each for the following,
+   except where noted:
+
+DynamicChangeMaker class file exists      :  1 point
+makeChangeWithDynamicProgramming          :  1 point
+JavaDocs Class                            :  0 point
+JavaDocs main                             :  0 point
+JavaDocs makeChange method                :  0 point
+DynamicChangeMaker compiles no errors     :  0 point
+DynamicChangeMaker tests pass (26 of 26)  :  0 points
+Extra credit  tests pass (12 of 12, 2 pts):  0 points [EC if completed]
+At least DybnamicChangeMaker in Git repo  :  1 point
+Coding Style                              :  1 point
+
+
+Total possible score: 34 points + 2 EC = 36 points
+
+Evaluation
+==========
+
+   4 out of 34 = 11.76% which is an F
+
+Your code did not compile.  I clearly stated in class that if it doesn't
+compile, I cannot give you any credit.
+
+Your code is not JavaDoc'd either.  I clearly stated in class that you
+MUST JavaDoc your code for this assignment.
+
+Since your code doesn't compile, I can't run any of the tests in the
+test harness, so I can't give you credit for those, either.
+
+These were all things that I talked about in class several times.
+
